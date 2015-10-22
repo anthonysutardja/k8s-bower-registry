@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: bower
+spec:
+  replicas: 1
+  selector:
+    app: bower
+  template:
+    metadata:
+      labels:
+        app: bower
+    spec:
+      containers:
+      - name: bower
+        image: us.gcr.io/dray-app/bower-reg:1.0
+        env:
+        - name: DATABASE_URL
+          value: "USER:PASS@HOST:PORT/DB_NAME"
+        command: ["./run.sh"]
+        ports:
+          - containerPort: 3000

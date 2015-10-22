@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: bower-svc
+  labels:
+    app: bower
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 3000
+    protocol: TCP
+  selector:
+    app: bower
